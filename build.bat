@@ -18,8 +18,8 @@ if errorlevel 1 (
 echo  Cleaning previous build...
 if exist "%PUBLISH_DIR%" rmdir /s /q "%PUBLISH_DIR%"
 
-echo  Publishing RecallIQ.UI...
-dotnet publish "%SCRIPT_DIR%\RecallIQ.UI\RecallIQ.UI.csproj" -c Release -r win-x64 --self-contained false -o "%PUBLISH_DIR%" -p:Platform=x64
+echo  Building RecallIQ.UI...
+dotnet build "%SCRIPT_DIR%\RecallIQ.UI\RecallIQ.UI.csproj" -c Release -p:Platform=x64
 
 if errorlevel 1 (
     echo.
@@ -27,6 +27,11 @@ if errorlevel 1 (
     pause
     exit /b 1
 )
+
+set "BUILD_OUT=%SCRIPT_DIR%\RecallIQ.UI\bin\x64\Release\net8.0-windows10.0.22621.0"
+
+echo  Copying build output to publish folder...
+xcopy "%BUILD_OUT%\*" "%PUBLISH_DIR%\" /E /I /Y /Q >nul
 
 echo.
 echo  Build complete. Output: %PUBLISH_DIR%

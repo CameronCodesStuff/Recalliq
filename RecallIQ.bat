@@ -551,7 +551,7 @@ REM ==============================================================
     set "BUILD_CONFIG=Release"
     set "BUILD_PLATFORM=x64"
     set "PUBLISH_DIR=%SCRIPT_DIR%\publish"
-    "!DOTNET_PATH!" publish "%UI_PROJECT%\RecallIQ.UI.csproj" -c Release -r win-x64 --self-contained false -o "!PUBLISH_DIR!" --verbosity quiet 2>>"%LOG_FILE%"
+    "!DOTNET_PATH!" publish "%UI_PROJECT%\RecallIQ.UI.csproj" -c Release -p:Platform=x64 --self-contained false -o "!PUBLISH_DIR!" --verbosity quiet 2>>"%LOG_FILE%"
     if !errorlevel! equ 0 (
         if exist "!PUBLISH_DIR!\%EXE_NAME%" (
             set "BIN_DIR=!PUBLISH_DIR!"
