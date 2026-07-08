@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RecallIQ.UI (Unpackaged)": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

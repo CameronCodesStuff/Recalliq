@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="RecallIQ.UI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="RecallIQ"
+    MinWidth="900" MinHeight="600">
+
+    <Grid>
+        <NavigationView x:Name="NavView"
+                        IsBackButtonVisible="Collapsed"
+                        IsSettingsVisible="False"
+                        PaneDisplayMode="Left"
+                        SelectionChanged="NavView_SelectionChanged"
+                        Loaded="NavView_Loaded">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Dashboard" Tag="Dashboard" Icon="Home">
+                    <NavigationViewItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Number1" Modifiers="Control"/>
+                    </NavigationViewItem.KeyboardAccelerators>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Search" Tag="Search" Icon="Find">
+                    <NavigationViewItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Number2" Modifiers="Control"/>
+                    </NavigationViewItem.KeyboardAccelerators>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Documents" Tag="Documents" Icon="Document">
+                    <NavigationViewItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Number3" Modifiers="Control"/>
+                    </NavigationViewItem.KeyboardAccelerators>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Activity" Tag="Activity" Icon="Clock">
+                    <NavigationViewItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Number4" Modifiers="Control"/>
+                    </NavigationViewItem.KeyboardAccelerators>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Content="Settings" Tag="Settings" Icon="Setting">
+                    <NavigationViewItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="S" Modifiers="Control,Shift"/>
+                    </NavigationViewItem.KeyboardAccelerators>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
+
+            <NavigationView.Content>
+                <Frame x:Name="ContentFrame"/>
+            </NavigationView.Content>
+        </NavigationView>
+    </Grid>
+</Window>
