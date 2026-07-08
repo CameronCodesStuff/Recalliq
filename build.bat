@@ -17,6 +17,20 @@ if errorlevel 1 (
 
 echo  Cleaning previous build...
 if exist "%PUBLISH_DIR%" rmdir /s /q "%PUBLISH_DIR%"
+for /d %%d in ("%SCRIPT_DIR%\RecallIQ.*") do (
+    if exist "%%d\obj" rmdir /s /q "%%d\obj" 2>nul
+    if exist "%%d\bin" rmdir /s /q "%%d\bin" 2>nul
+)
+
+echo  Restoring packages...
+dotnet restore "%SCRIPT_DIR%\RecallIQ.sln" -p:Platform=x64
+
+if errorlevel 1 (
+    echo.
+    echo  [X] Restore failed. Check your internet connection.
+    pause
+    exit /b 1
+)
 
 echo  Building RecallIQ.UI...
 dotnet build "%SCRIPT_DIR%\RecallIQ.UI\RecallIQ.UI.csproj" -c Release -p:Platform=x64
