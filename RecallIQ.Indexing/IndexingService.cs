@@ -78,21 +78,22 @@ public sealed class IndexingService : IIndexingService
                 CancellationToken = _cts.Token
             };
 
+            var status = CurrentStatus;
             await Parallel.ForEachAsync(allFiles, parallelOptions, async (filePath, ct) =>
             {
                 try
                 {
                     await IndexSingleFileInternalAsync(filePath, ct);
-                    Interlocked.Increment(ref CurrentStatus.ProcessedFiles);
+                    Interlocked.Increment(ref status.ProcessedFiles);
                 }
                 catch (OperationCanceledException) { throw; }
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, "Failed to index {File}", filePath);
-                    Interlocked.Increment(ref CurrentStatus.FailedFiles);
+                    Interlocked.Increment(ref status.FailedFiles);
                 }
 
-                CurrentStatus.CurrentFile = filePath;
+                status.CurrentFile = filePath;
                 NotifyProgress();
             });
 
