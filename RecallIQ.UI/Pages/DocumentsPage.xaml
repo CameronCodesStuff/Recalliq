@@ -25,7 +25,7 @@
                  MaxWidth="400" HorizontalAlignment="Left"/>
 
         <ListView Grid.Row="2" ItemsSource="{x:Bind ViewModel.FilteredDocuments, Mode=OneWay}"
-                  SelectedItem="{x:Bind ViewModel.SelectedDocument, Mode=TwoWay}"
+                  SelectionChanged="ListView_SelectionChanged"
                   DoubleTapped="ListView_DoubleTapped"
                   SelectionMode="Single">
             <ListView.ItemTemplate>

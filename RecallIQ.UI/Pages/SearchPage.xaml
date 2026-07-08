@@ -38,7 +38,7 @@
                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
 
         <ListView Grid.Row="3" ItemsSource="{x:Bind ViewModel.Results, Mode=OneWay}"
-                  SelectedItem="{x:Bind ViewModel.SelectedResult, Mode=TwoWay}"
+                  SelectionChanged="ListView_SelectionChanged"
                   SelectionMode="Single" MaxWidth="1200" HorizontalAlignment="Left">
             <ListView.ItemTemplate>
                 <DataTemplate>

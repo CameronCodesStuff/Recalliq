@@ -15,6 +15,11 @@ public sealed partial class SearchPage : Page
         InitializeComponent();
     }
 
+    private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ViewModel.SelectedResult = (sender as ListView)?.SelectedItem as RecallIQ.Core.Models.SearchResult;
+    }
+
     private async void SearchBox_KeyDown(object sender, KeyRoutedEventArgs e)
     {
         if (e.Key == VirtualKey.Enter)

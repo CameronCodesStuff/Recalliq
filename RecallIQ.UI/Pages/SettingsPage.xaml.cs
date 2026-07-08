@@ -22,6 +22,11 @@ public sealed partial class SettingsPage : Page
         ViewModel.LoadSettingsCommand.Execute(null);
     }
 
+    private void FolderList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ViewModel.SelectedFolder = (sender as ListView)?.SelectedItem as string ?? string.Empty;
+    }
+
     private async void AddFolder_Click(object sender, RoutedEventArgs e)
     {
         var picker = new FolderPicker();

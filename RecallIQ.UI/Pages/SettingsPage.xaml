@@ -15,7 +15,7 @@
                     <TextBlock Text="Watched Folders" Style="{StaticResource SubtitleTextBlockStyle}"/>
 
                     <ListView ItemsSource="{x:Bind ViewModel.WatchedFolders, Mode=OneWay}"
-                              SelectedItem="{x:Bind ViewModel.SelectedFolder, Mode=TwoWay}"
+                              SelectionChanged="FolderList_SelectionChanged"
                               SelectionMode="Single" MaxHeight="200">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="x:String">

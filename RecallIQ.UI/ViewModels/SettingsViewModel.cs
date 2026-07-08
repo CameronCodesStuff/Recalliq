@@ -16,7 +16,7 @@ public partial class SettingsViewModel : ObservableObject
     [ObservableProperty] private bool _isDarkMode;
     [ObservableProperty] private bool _isIndexingEnabled;
     [ObservableProperty] private string _aiModelPath = string.Empty;
-    [ObservableProperty] private int _maxSearchResults;
+    [ObservableProperty] private double _maxSearchResults;
     [ObservableProperty] private string _statusMessage = string.Empty;
     [ObservableProperty] private bool _isRebuilding;
     [ObservableProperty] private string _selectedFolder = string.Empty;
@@ -52,7 +52,7 @@ public partial class SettingsViewModel : ObservableObject
         s.IsDarkMode = IsDarkMode;
         s.IsIndexingEnabled = IsIndexingEnabled;
         s.AiModelPath = AiModelPath;
-        s.MaxSearchResults = MaxSearchResults;
+        s.MaxSearchResults = (int)MaxSearchResults;
         await _settings.SaveAsync();
         StatusMessage = "Settings saved.";
     }

@@ -35,7 +35,7 @@
                             <TextBlock Text="{Binding FilePath}" FontSize="11"
                                        Foreground="{ThemeResource TextFillColorTertiaryBrush}"
                                        TextTrimming="CharacterEllipsis"
-                                       Visibility="{Binding FilePath, TargetNullValue=Collapsed, FallbackValue=Visible}"/>
+/>
                         </StackPanel>
                         <TextBlock Grid.Column="2" Text="{Binding TimestampUtc}"
                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"

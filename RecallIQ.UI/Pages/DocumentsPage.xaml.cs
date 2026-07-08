@@ -20,6 +20,11 @@ public sealed partial class DocumentsPage : Page
         await ViewModel.LoadDocumentsCommand.ExecuteAsync(null);
     }
 
+    private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ViewModel.SelectedDocument = (sender as ListView)?.SelectedItem as RecallIQ.Core.Models.IndexedDocument;
+    }
+
     private void ListView_DoubleTapped(object sender, Microsoft.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
     {
         ViewModel.OpenFileCommand.Execute(null);
